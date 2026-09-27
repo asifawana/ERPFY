@@ -1,0 +1,12 @@
+{
+  "name": "Hero Banner",
+  "type": "hero-banner",
+  "tag": "section",
+  "class": "storefront-hero",
+  "settings": [
+    { "id": "title", "type": "text", "label": "Headline", "default": "Direct From Origin" },
+    { "id": "subtitle", "type": "textarea", "label": "Subtitle", "default": "Premium goods curated and fulfilled directly from verified warehouses." },
+    { "id": "buttonText", "type": "text", "label": "CTA Button", "default": "Explore Catalog" },
+    { "id": "alignment", "type": "select", "label": "Text Alignment", "options": ["left", "center"], "default": "left" }
+  ]
+}

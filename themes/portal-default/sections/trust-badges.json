@@ -1,0 +1,17 @@
+{
+  "name": "Trust Badges",
+  "type": "trust-badges",
+  "tag": "section",
+  "class": "storefront-trust-badges",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Benefit Badge",
+      "settings": [
+        { "id": "icon", "type": "text", "label": "Lucide Icon Name", "default": "Truck" },
+        { "id": "title", "type": "text", "label": "Title", "default": "Free Express Delivery" },
+        { "id": "description", "type": "text", "label": "Subtitle", "default": "On orders qualifying for free shipping" }
+      ]
+    }
+  ]
+}

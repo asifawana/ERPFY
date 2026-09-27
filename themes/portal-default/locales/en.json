@@ -1,0 +1,11 @@
+{
+  "general": {
+    "cart": "Cart",
+    "search": "Search products...",
+    "checkout": "Checkout",
+    "empty_cart": "Your cart is empty",
+    "free_shipping": "Free Shipping Available",
+    "add_to_cart": "Add to Cart",
+    "order_summary": "Order Summary"
+  }
+}

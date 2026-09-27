@@ -1,0 +1,37 @@
+# ==============================================================================
+# ERPfy.net Production Caddyfile
+# Reverse Proxy & TLS for ERP Platform Services
+# ==============================================================================
+
+{
+    # Global Server Configuration
+    email security@erpfy.net
+}
+
+# ------------------------------------------------------------------------------
+# 1. Canonical Redirect: www.erpfy.net -> erpfy.net
+# ------------------------------------------------------------------------------
+www.{$PLATFORM_DOMAIN:erpfy.net} {
+    redir https://{$PLATFORM_DOMAIN:erpfy.net}{uri} permanent
+}
+
+# ------------------------------------------------------------------------------
+# 2. ERPfy Platform Base & Application Services
+#    erpfy.net, app.erpfy.net, api.erpfy.net
+# ------------------------------------------------------------------------------
+{$PLATFORM_DOMAIN:erpfy.net}, app.{$PLATFORM_DOMAIN:erpfy.net}, api.{$PLATFORM_DOMAIN:erpfy.net} {
+    header {
+        Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+
+    reverse_proxy erpfy-app:3000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}

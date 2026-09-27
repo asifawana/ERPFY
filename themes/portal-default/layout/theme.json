@@ -1,0 +1,10 @@
+{
+  "name": "Main Store Layout",
+  "slots": [
+    { "type": "announcement_bar", "position": "top" },
+    { "type": "header", "position": "header" },
+    { "type": "main_content", "position": "content" },
+    { "type": "slide_cart_drawer", "position": "overlay" },
+    { "type": "footer", "position": "footer" }
+  ]
+}

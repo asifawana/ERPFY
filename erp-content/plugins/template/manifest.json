@@ -1,0 +1,61 @@
+{
+  "protocol": "eap-v1",
+  "app_id": "erpfy.template_starter",
+  "name": "Starter Plugin Template",
+  "slug": "template-starter",
+  "version": "1.0.0",
+  "minimum_platform_version": "1.0.0",
+  "developer_id": "erpfy.community",
+  "description": "Standard boilerplate template for creating official ERPFY plugins with full platform theme inheritance, design tokens, and dashboard widget engine contributions.",
+  "website": "https://erpfy.com/plugins/template",
+  "category": "productivity",
+  "license": "Commercial",
+  "ui": {
+    "design_system": "erpfy",
+    "theme_inheritance": "required",
+    "supports_dark_mode": true,
+    "supports_light_mode": true,
+    "supports_high_contrast": true,
+    "supports_rtl": true,
+    "entry_route": "/template"
+  },
+  "permissions": [
+    "template.view",
+    "template.edit"
+  ],
+  "navigation": [
+    {
+      "id": "template_overview",
+      "label": "Template Overview",
+      "href": "/c/:companySlug/template",
+      "icon": "Layers",
+      "permission": "template.view"
+    }
+  ],
+  "dashboard": {
+    "widgets": [
+      {
+        "id": "template.active_records",
+        "title": "Active Template Records",
+        "type": "kpi",
+        "preferred_size": "kpi",
+        "priority": 70,
+        "permission": "template.view"
+      }
+    ]
+  },
+  "quick_actions": [
+    {
+      "id": "template.create_record",
+      "label": "New Record",
+      "href": "/c/:companySlug/template?action=new",
+      "icon": "Plus",
+      "permission": "template.edit"
+    }
+  ],
+  "platform": {
+    "id": "erpfy",
+    "protocol": "eap-v1",
+    "plugin_id": "erpfy.template_starter"
+  }
+}

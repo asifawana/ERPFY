@@ -1,0 +1,179 @@
+{
+  "protocol": "eap-v1",
+  "app_id": "erpfy.contacts_crm",
+  "name": "Contacts & CRM / Universal Party Master",
+  "slug": "contacts-crm",
+  "version": "1.0.0",
+  "minimum_platform_version": "1.0.0",
+  "developer_id": "erpfy.core",
+  "ui": {
+    "design_system": "erpfy",
+    "theme_inheritance": "required",
+    "supports_dark_mode": true,
+    "supports_light_mode": true,
+    "supports_high_contrast": true,
+    "supports_rtl": true,
+    "entry_route": "/c/:companySlug/crm"
+  },
+  "dashboard": {
+    "widgets": [
+      {
+        "id": "crm.total_leads",
+        "title": "Total Inbound Leads",
+        "type": "kpi",
+        "preferred_size": "kpi",
+        "priority": 80,
+        "permission": "crm.leads.view"
+      },
+      {
+        "id": "crm.pipeline_value",
+        "title": "CRM Pipeline Value",
+        "type": "kpi",
+        "preferred_size": "kpi",
+        "priority": 75,
+        "permission": "crm.leads.view"
+      },
+      {
+        "id": "crm.active_opportunities",
+        "title": "Active Opportunities",
+        "type": "kpi",
+        "preferred_size": "kpi",
+        "priority": 70,
+        "permission": "crm.leads.view"
+      },
+      {
+        "id": "crm.conversion_rate",
+        "title": "Lead Conversion Rate",
+        "type": "kpi",
+        "preferred_size": "kpi",
+        "priority": 65,
+        "permission": "crm.leads.view"
+      }
+    ]
+  },
+  "quick_actions": [
+    {
+      "id": "crm.create_lead",
+      "label": "New Lead",
+      "href": "/c/:companySlug/crm/leads?action=new",
+      "icon": "UserPlus",
+      "permission": "crm.leads.manage"
+    },
+    {
+      "id": "crm.create_party",
+      "label": "New Contact",
+      "href": "/c/:companySlug/crm/contacts?action=new",
+      "icon": "Plus",
+      "permission": "contacts.create"
+    }
+  ],
+  "permissions": [
+    "contacts.view",
+    "contacts.create",
+    "contacts.update",
+    "contacts.archive",
+    "contacts.export",
+    "crm.leads.view",
+    "crm.leads.manage",
+    "crm.activities.view",
+    "crm.activities.manage",
+    "crm.sensitive_fields.view"
+  ],
+  "events": [
+    "PartyCreated",
+    "PartyUpdated",
+    "PartyArchived",
+    "PartyMerged",
+    "RoleAssigned",
+    "RoleRemoved",
+    "LeadCreated",
+    "LeadConverted",
+    "OpportunityCreated",
+    "OpportunityStageChanged"
+  ],
+  "navigation": [
+    {
+      "id": "crm-overview",
+      "label": "CRM Overview",
+      "href": "/c/:companySlug/crm",
+      "icon": "LayoutDashboard",
+      "group": "CRM"
+    },
+    {
+      "id": "crm-contacts",
+      "label": "Contacts & Parties",
+      "href": "/c/:companySlug/crm/contacts",
+      "icon": "Users",
+      "group": "CRM",
+      "permission": "contacts.view"
+    },
+    {
+      "id": "crm-companies",
+      "label": "Organizations",
+      "href": "/c/:companySlug/crm/companies",
+      "icon": "Building2",
+      "group": "CRM",
+      "permission": "contacts.view"
+    },
+    {
+      "id": "crm-leads",
+      "label": "Leads",
+      "href": "/c/:companySlug/crm/leads",
+      "icon": "Target",
+      "group": "CRM",
+      "permission": "crm.leads.view"
+    },
+    {
+      "id": "crm-opportunities",
+      "label": "Opportunities",
+      "href": "/c/:companySlug/crm/opportunities",
+      "icon": "TrendingUp",
+      "group": "CRM",
+      "permission": "crm.leads.view"
+    },
+    {
+      "id": "crm-activities",
+      "label": "Activities",
+      "href": "/c/:companySlug/crm/activities",
+      "icon": "CalendarCheck",
+      "group": "CRM",
+      "permission": "crm.activities.view"
+    }
+  ],
+  "settings": {
+    "contactNumberingPrefix": {
+      "type": "string",
+      "label": "Party Numbering Prefix",
+      "default": "PRT-"
+    },
+    "defaultCountry": {
+      "type": "string",
+      "label": "Default Country Code",
+      "default": "US"
+    },
+    "duplicateSensitivity": {
+      "type": "select",
+      "label": "Duplicate Detection Strictness",
+      "default": "high",
+      "options": [
+        { "label": "Strict (Exact Match on Email, Phone, or Tax ID)", "value": "high" },
+        { "label": "Moderate (Normalized Mobile or Legal Name)", "value": "moderate" }
+      ]
+    },
+    "defaultLeadStage": {
+      "type": "select",
+      "label": "Default Initial Lead Stage",
+      "default": "new",
+      "options": [
+        { "label": "New Inbound Lead", "value": "new" },
+        { "label": "Contacted", "value": "contacted" },
+        { "label": "Qualified", "value": "qualified" }
+      ]
+    }
+  },
+  "platform": {
+    "id": "erpfy",
+    "protocol": "eap-v1",
+    "plugin_id": "erpfy.contacts_crm"
+  }
+}

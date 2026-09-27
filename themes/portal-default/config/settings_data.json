@@ -1,0 +1,18 @@
+{
+  "current": {
+    "primaryColor": "#15803d",
+    "accentColor": "#f59e0b",
+    "backgroundColor": "#ffffff",
+    "textColor": "#171717",
+    "typography": "Inter, -apple-system, sans-serif",
+    "showAnnouncement": true,
+    "announcementText": "Free delivery on orders over $100 | Use code WELCOME10 for 10% off",
+    "headerSticky": true,
+    "heroTitle": "Direct From Origin",
+    "heroSubtitle": "Premium goods curated and fulfilled directly from verified warehouses.",
+    "heroButtonText": "Explore Catalog",
+    "productsPerRow": 4,
+    "showStockBadge": true,
+    "enableQuickAddToCart": true
+  }
+}

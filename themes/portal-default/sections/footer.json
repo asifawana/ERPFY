@@ -1,0 +1,9 @@
+{
+  "name": "Store Footer",
+  "type": "footer",
+  "settings": [
+    { "id": "showPoweredBy", "type": "checkbox", "label": "Show 'Powered by ERPfy'", "default": true },
+    { "id": "copyrightText", "type": "text", "label": "Copyright Line", "default": "All rights reserved." },
+    { "id": "showPaymentIcons", "type": "checkbox", "label": "Show Payment Badges", "default": true }
+  ]
+}

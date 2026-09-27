@@ -1,0 +1,14 @@
+{
+  "current": {
+    "primaryColor": "#b45309",
+    "accentColor": "#d97706",
+    "backgroundColor": "#fffbeb",
+    "textColor": "#1c1917",
+    "typography": "Playfair Display, Georgia, serif",
+    "showAnnouncement": true,
+    "announcementText": "Complimentary bespoke gift wrapping on orders over $150",
+    "heroTitle": "Crafted For Eternity",
+    "heroSubtitle": "Rare materials, timeless precision, and heritage craftsmanship.",
+    "heroButtonText": "Discover The Collection"
+  }
+}

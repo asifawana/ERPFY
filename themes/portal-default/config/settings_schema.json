@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Colors & Palette",
+    "settings": [
+      { "id": "primaryColor", "type": "color", "label": "Primary Brand Color", "default": "#15803d" },
+      { "id": "accentColor", "type": "color", "label": "Accent / Highlight Color", "default": "#f59e0b" },
+      { "id": "backgroundColor", "type": "color", "label": "Page Background", "default": "#ffffff" },
+      { "id": "textColor", "type": "color", "label": "Body Text Color", "default": "#171717" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "id": "typography",
+        "type": "font_picker",
+        "label": "Storefront Font Family",
+        "default": "Inter, -apple-system, sans-serif",
+        "options": [
+          { "value": "Inter, -apple-system, sans-serif", "label": "Inter (Clean & Modern)" },
+          { "value": "Outfit, sans-serif", "label": "Outfit (Futuristic & Geometric)" },
+          { "value": "Roboto, sans-serif", "label": "Roboto (Structured & Technical)" },
+          { "value": "Plus Jakarta Sans, sans-serif", "label": "Jakarta (Premium Brand)" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Header & Announcement Bar",
+    "settings": [
+      { "id": "showAnnouncement", "type": "checkbox", "label": "Show Top Announcement Bar", "default": true },
+      { "id": "announcementText", "type": "text", "label": "Announcement Message", "default": "Free worldwide delivery on orders over $100 | Use code WELCOME10 for 10% off" },
+      { "id": "headerSticky", "type": "checkbox", "label": "Sticky Header", "default": true }
+    ]
+  },
+  {
+    "name": "Hero Section",
+    "settings": [
+      { "id": "heroTitle", "type": "text", "label": "Hero Headline", "default": "Direct From Origin" },
+      { "id": "heroSubtitle", "type": "textarea", "label": "Hero Subtitle", "default": "Premium goods curated and fulfilled directly from verified warehouses." },
+      { "id": "heroButtonText", "type": "text", "label": "Button Label", "default": "Explore Catalog" }
+    ]
+  },
+  {
+    "name": "Product Grid & Catalog",
+    "settings": [
+      { "id": "productsPerRow", "type": "range", "label": "Products Per Row (Desktop)", "min": 2, "max": 4, "step": 1, "default": 4 },
+      { "id": "showStockBadge", "type": "checkbox", "label": "Show Real-Time Stock Status", "default": true },
+      { "id": "enableQuickAddToCart", "type": "checkbox", "label": "Enable 1-Click Add To Cart", "default": true }
+    ]
+  }
+]

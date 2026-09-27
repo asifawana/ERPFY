@@ -1,0 +1,1082 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/*
+ * ERPFY Design System v1.8 — LOCKED.
+ * Any change here needs a Change Record in DESIGN.md and a version bump.
+ * Do not reintroduce a tenant-recoloured --primary. Primary is near-black.
+ */
+
+@custom-variant dark (&:where([data-erpfy-dark='on'], [data-erpfy-dark='on'] *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  /* ERPFY raw palette — DESIGN.md section 3 */
+  --erpfy-canvas: #f6f6f4;
+  --erpfy-surface: #ffffff;
+  --erpfy-rail: #ebebe9;
+  --erpfy-topbar: #1e5631;
+  --erpfy-ink: #20201d;
+  --erpfy-ink-strong: #161714;
+  --erpfy-ink-soft: #3f3f3a;
+  --erpfy-ink-muted: #6f6f69;
+  --erpfy-ink-faint: #999992;
+  --erpfy-line: #dededb;
+  --erpfy-line-soft: #e8e8e5;
+  --erpfy-control-line: #dcdcd8;
+  --erpfy-control-ink: #30302c;
+  --erpfy-hover: #f7f7f5;
+  --erpfy-nav-count-bg: #d8d8d4;
+  --erpfy-nav-count-ink: #454545;
+  --erpfy-scrollbar-thumb: #b6b6b0;
+  --erpfy-scrollbar-thumb-hover: #85857f;
+  --erpfy-leaf: #edffdc;
+  --erpfy-leaf-soft: #efffe2;
+  --erpfy-leaf-ink: #426d21;
+
+  /* ---------------------------------------------------------------- *
+   * Portal theme — the default. lib/theme.ts derives these from the
+   * chosen colour and the shell writes them onto its root element at
+   * runtime, so a customer's choice overrides everything below without
+   * a screen having to know. These values are themeVars('#1e5631'),
+   * the colour the design ships with; they exist so the surfaces that
+   * sit outside the shell (log in, the signed-out gate) are themed too.
+   * ---------------------------------------------------------------- */
+  --erpfy-brand: #1e5631;
+  --erpfy-brand-hover: #163f24;
+  --erpfy-brand-on: #ffffff;
+  --erpfy-brand-soft: #e9f1ec;
+  --erpfy-brand-soft-ink: #266d3e;
+  --erpfy-brand-line: #b7d7c2;
+  --erpfy-brand-ring: #1e563159;
+  --erpfy-brand-2: #3b9559;
+  --erpfy-brand-3: #72b98a;
+  --erpfy-accent: #e9f1ec;
+  --erpfy-accent-ink: #1e5631;
+
+  /* Status. Meaning, not identity: these never follow the brand, so a
+     purple portal still shows a paid order in green. */
+  --erpfy-ok-bg: #dcfce7;
+  --erpfy-ok-ink: #15803d;
+  --erpfy-warn-bg: #fef3c7;
+  --erpfy-warn-ink: #b45309;
+  --erpfy-bad-bg: #fee2e2;
+  --erpfy-bad-ink: #b91c1c;
+  --erpfy-info-bg: #dbeafe;
+  --erpfy-info-ink: #1d4ed8;
+
+  /* Status */
+  --erpfy-status-success-bg: #edffdc;
+  --erpfy-status-success-ink: #426d21;
+  --erpfy-status-attention-bg: #fff4d6;
+  --erpfy-status-attention-ink: #7a5a10;
+  --erpfy-status-critical-bg: #ffe6e2;
+  --erpfy-status-critical-ink: #96261a;
+  --erpfy-status-info-bg: #e6f0ff;
+  --erpfy-status-info-ink: #1f4d8f;
+  --erpfy-status-neutral-bg: #eeeeeb;
+  --erpfy-status-neutral-ink: #5c5c56;
+
+  /* shadcn semantic bridge */
+  --background: oklch(0.975 0.003 105);
+  --foreground: oklch(0.21 0.006 105);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.006 105);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.006 105);
+  --primary: oklch(0.21 0.006 105);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.004 105);
+  --secondary-foreground: oklch(0.21 0.006 105);
+  --muted: oklch(0.95 0.004 105);
+  --muted-foreground: oklch(0.5 0.005 105);
+  --accent: oklch(0.95 0.004 105);
+  --accent-foreground: oklch(0.21 0.006 105);
+  --destructive: oklch(0.58 0.22 28);
+  --border: oklch(0.89 0.004 105);
+  --input: oklch(0.89 0.004 105);
+  /* The focus ring is part of the theme: a fixed lime ring on a navy portal looked broken. */
+  --ring: var(--erpfy-brand);
+  --chart-1: oklch(0.78 0.2 125);
+  --chart-2: oklch(0.62 0.16 130);
+  --chart-3: oklch(0.5 0.12 135);
+  --chart-4: oklch(0.39 0.08 140);
+  --chart-5: oklch(0.29 0.04 140);
+  --radius: 0.7rem;
+  --sidebar: oklch(0.94 0.004 105);
+  --sidebar-foreground: oklch(0.24 0.006 105);
+  --sidebar-primary: oklch(0.21 0.006 105);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(1 0 0);
+  --sidebar-accent-foreground: oklch(0.21 0.006 105);
+  --sidebar-border: oklch(0.88 0.004 105);
+  --sidebar-ring: oklch(0.72 0.16 125);
+
+  /* ---------------------------------------------------------------- *
+   * UNIVERSAL MOTION SYSTEM TOKENS — Master Motion System Lock
+   * Authority: UNIVERSAL-ANIMATION-MASTER-PROMPT.md (Sections 1, 5, 6)
+   * ---------------------------------------------------------------- */
+  --erpfy-motion-instant: 75ms; /* 50–100ms: pressed state, toggles, checkboxes */
+  --erpfy-motion-fast: 150ms; /* 120–180ms: buttons, icons, hover, tooltips */
+  --erpfy-motion-standard: 220ms; /* 180–280ms: dropdowns, cards, tabs, inputs */
+  --erpfy-motion-medium: 320ms; /* 280–450ms: drawers, modals, dashboard transitions */
+  --erpfy-motion-slow: 600ms; /* 500–900ms: hero entrances, marketing storytelling */
+
+  --erpfy-ease-enter: cubic-bezier(
+    0.16,
+    1,
+    0.3,
+    1
+  ); /* Smooth deceleration, settles gently */
+  --erpfy-ease-exit: cubic-bezier(
+    0.7,
+    0,
+    0.84,
+    0
+  ); /* Quick acceleration, leaves crisp */
+  --erpfy-ease-transform: cubic-bezier(
+    0.4,
+    0,
+    0.2,
+    1
+  ); /* Natural ease-in-out */
+  --erpfy-ease-spring: cubic-bezier(
+    0.34,
+    1.56,
+    0.64,
+    1
+  ); /* Subtle spring without bounce */
+}
+
+html[data-erpfy-dark='on'] {
+  color-scheme: dark;
+  --erpfy-canvas: #171816;
+  --erpfy-surface: #20221f;
+  --erpfy-rail: #262824;
+  --erpfy-ink: #f2f3ef;
+  --erpfy-ink-strong: #ffffff;
+  --erpfy-ink-soft: #d7d9d3;
+  --erpfy-ink-muted: #aeb2aa;
+  --erpfy-ink-faint: #858a81;
+  --erpfy-line: #3c3f39;
+  --erpfy-line-soft: #30332e;
+  --erpfy-control-line: #50544c;
+  --erpfy-control-ink: #f2f3ef;
+  --erpfy-hover: #2b2e29;
+  --erpfy-nav-count-bg: #3c3f39;
+  --erpfy-nav-count-ink: #f2f3ef;
+  --erpfy-scrollbar-thumb: #686d64;
+  --erpfy-scrollbar-thumb-hover: #92988e;
+  --background: #171816;
+  --foreground: #f2f3ef;
+  --card: #20221f;
+  --card-foreground: #f2f3ef;
+  --popover: #20221f;
+  --popover-foreground: #f2f3ef;
+  --secondary: #2b2e29;
+  --secondary-foreground: #f2f3ef;
+  --muted: #2b2e29;
+  --muted-foreground: #aeb2aa;
+  --accent: #30332e;
+  --accent-foreground: #ffffff;
+  --border: #3c3f39;
+  --input: #50544c;
+  --erpfy-brand-soft: #203524;
+  --erpfy-brand-soft-ink: #9ed3a8;
+  --erpfy-brand-line: #3c5240;
+  --erpfy-status-neutral-bg: #2b2e29;
+  --erpfy-status-neutral-ink: #d7d9d3;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .bg-white {
+  background-color: var(--erpfy-surface) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .bg-\[\#F9FAFB\],
+html[data-erpfy-dark='on'] .admin-surface .bg-\[\#f9fafb\],
+html[data-erpfy-dark='on'] .admin-surface .bg-\[\#F7F7F7\],
+html[data-erpfy-dark='on'] .admin-surface .bg-\[\#F3F4F6\] {
+  background-color: var(--erpfy-hover) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .border-\[\#D1D5DB\],
+html[data-erpfy-dark='on'] .admin-surface .border-\[\#E5E7EB\],
+html[data-erpfy-dark='on'] .admin-surface .border-\[\#F3F4F6\] {
+  border-color: var(--erpfy-line) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .hover\:bg-\[\#F9FAFB\]:hover,
+html[data-erpfy-dark='on'] .admin-surface .hover\:bg-\[\#F3F4F6\]:hover {
+  background-color: var(--erpfy-hover) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface button[role='switch'] > .bg-white {
+  background-color: #ffffff !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .border-\[\#E5E7EB\] {
+  border-color: var(--erpfy-line) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#111827\],
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#20201d\],
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#303030\],
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#374151\],
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#4B5563\] {
+  color: var(--erpfy-ink) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#6B7280\],
+html[data-erpfy-dark='on'] .admin-surface .text-\[\#9CA3AF\] {
+  color: var(--erpfy-ink-muted) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .erpfy-field {
+  background: var(--erpfy-surface);
+  color: var(--erpfy-ink);
+}
+
+/* The admin shell intentionally has its own compact Shopify-like palette. Keep the
+   scope, but switch that palette as a unit in dark mode instead of allowing its
+   light declarations below to shadow the root dark tokens. */
+html[data-erpfy-dark='on'] .admin-surface {
+  --erpfy-canvas: #171816;
+  --erpfy-surface: #20221f;
+  --erpfy-rail: #262824;
+  --erpfy-ink: #f2f3ef;
+  --erpfy-ink-strong: #ffffff;
+  --erpfy-ink-soft: #d7d9d3;
+  --erpfy-ink-muted: #aeb2aa;
+  --erpfy-ink-faint: #858a81;
+  --erpfy-line: #3c3f39;
+  --erpfy-line-soft: #30332e;
+  --erpfy-control-line: #50544c;
+  --erpfy-hover: #2b2e29;
+  --erpfy-leaf: #243d2a;
+  --erpfy-leaf-soft: #203524;
+  --erpfy-leaf-ink: #9ed3a8;
+  --erpfy-brand-soft: #203524;
+  --erpfy-brand-soft-ink: #9ed3a8;
+  --erpfy-brand-line: #3c5240;
+  --erpfy-status-neutral-bg: #2b2e29;
+  --erpfy-status-neutral-ink: #d7d9d3;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .active-workspace-card {
+  background-color: rgba(36, 61, 42, 0.5) !important;
+  border-color: rgba(60, 82, 64, 0.8) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .active-workspace-card:hover {
+  background-color: rgba(36, 61, 42, 0.75) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .erpfy-card {
+  border-color: var(--erpfy-line);
+  box-shadow:
+    0 1px 0 #ffffff08,
+    0 1px 3px #00000033;
+}
+
+html[data-erpfy-dark='on'] .admin-surface .nav-item.active {
+  background: var(--erpfy-surface);
+  color: var(--erpfy-ink-strong);
+}
+
+html[data-erpfy-dark='on'] .admin-surface .nav-item:hover {
+  background: var(--erpfy-hover);
+}
+
+html[data-erpfy-dark='on'] .admin-search-dialog {
+  background: var(--erpfy-surface) !important;
+  color: var(--erpfy-ink) !important;
+}
+
+html[data-erpfy-dark='on'] .admin-search-dialog [data-slot='input-group'] {
+  border-color: var(--erpfy-control-line);
+  background: var(--erpfy-hover);
+}
+
+html[data-erpfy-dark='on'] .admin-search-dialog [cmdk-item] {
+  color: var(--erpfy-ink);
+}
+
+html[data-erpfy-dark='on'] .admin-search-dialog [cmdk-item][data-selected='true'] {
+  background: var(--erpfy-hover);
+  color: var(--erpfy-ink);
+}
+
+html[data-erpfy-dark='on'] .admin-search-dialog [cmdk-group-heading] {
+  color: var(--erpfy-ink-muted);
+}
+
+@media (min-width: 768px) {
+  html[dir='rtl'] .admin-surface > aside {
+    right: 0;
+    left: auto;
+    border-radius: 0 14px 0 0;
+  }
+
+  html[dir='rtl'] #admin-content {
+    padding-right: 240px;
+    padding-left: 0;
+  }
+}
+
+/* Base sits in @layer base so component rules below can override it. An unlayered
+   `* { border-color }` reset outranks every layered rule and silently repaints
+   component borders. */
+@layer base {
+  * {
+    border-color: var(--border);
+    scrollbar-color: var(--erpfy-scrollbar-thumb) transparent;
+    scrollbar-width: thin;
+  }
+
+  /* Accessibility — Section 68 of UNIVERSAL-ANIMATION-MASTER-PROMPT.md */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Firefox uses scrollbar-width/color above. Chromium, Edge and Safari use
+     the WebKit pseudo-elements below. Keeping this global makes every page,
+     drawer, table and independently scrolling navigation use one slim rail. */
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--erpfy-scrollbar-thumb);
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--erpfy-scrollbar-thumb-hover);
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Hide scrollbar while preserving smooth scrolling */
+  .no-scrollbar,
+  .scrollbar-none {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Automatically hide scrollbar in sidebar navigation */
+  aside .overflow-y-auto,
+  [aria-label="Sidebar navigation"] .overflow-y-auto,
+  .sidebar-scroll-area {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  aside .overflow-y-auto::-webkit-scrollbar,
+  [aria-label="Sidebar navigation"] .overflow-y-auto::-webkit-scrollbar,
+  .sidebar-scroll-area::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background: var(--erpfy-canvas);
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--erpfy-canvas);
+    color: var(--erpfy-ink);
+    overscroll-behavior: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  body:has(.admin-search-dialog) [data-slot='dialog-overlay'] {
+    background: rgb(0 0 0 / 70%);
+    backdrop-filter: none;
+  }
+  .admin-search-dialog [data-slot='command-input-wrapper'] {
+    padding: 0;
+  }
+  .admin-search-dialog [data-slot='input-group'] {
+    border: 1px solid var(--erpfy-control-line);
+    background: var(--erpfy-hover);
+    border-radius: 8px;
+  }
+  .admin-search-dialog [data-slot='input-group']:focus-within {
+    outline: 1px solid var(--erpfy-brand);
+    border-color: var(--erpfy-brand);
+    box-shadow: none;
+  }
+
+  /* Scoped admin theme: marketing retains its established palette. */
+  .admin-surface {
+    --erpfy-canvas: #fafafa;
+    --erpfy-rail: #ebebeb;
+    --erpfy-topbar: var(--erpfy-brand);
+    --erpfy-ink: #303030;
+    --erpfy-ink-strong: #1a1a1a;
+    --erpfy-ink-soft: #454545;
+    --erpfy-ink-muted: #616161;
+    --erpfy-line: #dedede;
+    --erpfy-line-soft: #ebebeb;
+    --erpfy-control-line: #b5b5b5;
+    --erpfy-hover: #f7f7f7;
+    --erpfy-leaf: #d5f5e3;
+    --erpfy-leaf-ink: #005b3e;
+    /* The ring follows the theme here too; this was a fixed blue. */
+    --ring: var(--erpfy-brand);
+  }
+  .admin-surface .erpfy-card {
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    box-shadow:
+      0 1px 0 #0000000d,
+      0 1px 3px #00000008;
+  }
+  .admin-surface .nav-item {
+    min-height: 32px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    gap: 9px;
+    font-weight: 550;
+  }
+  .admin-surface .nav-item.active {
+    background: #fafafa;
+    font-weight: 650;
+    box-shadow: none;
+  }
+  .admin-surface .nav-item:hover {
+    background: #dedede;
+  }
+  .admin-surface .nav-item.nav-item-collapsed,
+  .nav-item.nav-item-collapsed {
+    width: 40px;
+    min-height: 40px;
+    height: 40px;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+  .admin-surface .nav-section-label {
+    padding-top: 24px;
+    padding-bottom: 8px;
+    font-size: 13px;
+  }
+  /* A flat fill rather than a gradient, deliberately. The raised look came from a
+     `linear-gradient` and the hover state from a solid colour, and CSS cannot interpolate
+     between an image and a colour: the gradient vanished the instant the pointer arrived,
+     which read as the button flashing. The inset highlight keeps the same raised edge and
+     leaves `background-color` free to transition. */
+  .admin-surface .primary-button {
+    border: 1px solid var(--erpfy-brand-hover);
+    border-radius: 8px;
+    background: var(--erpfy-brand);
+    box-shadow:
+      inset 0 1px 0 #ffffff33,
+      0 1px 0 #00000020;
+    font-size: 14px;
+  }
+  .admin-surface .primary-button:hover {
+    background: var(--erpfy-brand-hover);
+  }
+  .admin-surface .soft-button,
+  .admin-surface .erpfy-field {
+    border-radius: 8px;
+  }
+  .admin-surface .soft-button {
+    font-size: 14px;
+  }
+  .admin-surface .metric-card:hover {
+    transform: none;
+    box-shadow: 0 2px 6px #00000012;
+  }
+  .admin-surface .erpfy-label {
+    font-size: 14px;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Navigation
+   * ---------------------------------------------------------------- */
+
+  .nav-item {
+    display: flex;
+    min-height: 36px;
+    width: 100%;
+    align-items: center;
+    gap: 11px;
+    border-radius: 10px;
+    padding: 7px 10px;
+    color: var(--erpfy-ink-soft);
+    font-size: 14px;
+    font-weight: 560;
+    text-align: left;
+    position: relative;
+    transition:
+      background var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1)),
+      color var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1)),
+      transform var(--erpfy-motion-instant, 75ms) ease,
+      box-shadow var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+  .nav-item:hover {
+    background: rgb(255 255 255 / 68%);
+    color: var(--erpfy-ink);
+  }
+  .nav-item:active {
+    transform: scale(0.985);
+  }
+  .nav-item.active {
+    background: white;
+    color: var(--erpfy-brand-soft-ink);
+    box-shadow:
+      0 1px 3px rgb(0 0 0 / 6%),
+      0 1px 2px rgb(0 0 0 / 4%);
+  }
+
+  /* Universal Page Transition Keyframes */
+  @keyframes erpfy-page-enter-kf {
+    0% {
+      opacity: 0.85;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .erpfy-page-enter {
+    animation: erpfy-page-enter-kf var(--erpfy-motion-fast, 120ms)
+      var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1)) both;
+    will-change: opacity;
+  }
+
+  /* Stocky / NProgress Spinner */
+  @keyframes erpfy-spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Stocky Chart Bar Rise Animation */
+  @keyframes erpfy-bar-rise {
+    0% {
+      transform: scaleY(0);
+      opacity: 0.2;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .erpfy-chart-bar-animated {
+    transform-origin: bottom;
+    animation: erpfy-bar-rise 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Stocky KPI Card Hover Lift */
+  .erpfy-card-hover {
+    transition:
+      transform var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1)),
+      box-shadow var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1)),
+      border-color var(--erpfy-motion-fast, 150ms)
+        var(--erpfy-ease-enter, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+  .erpfy-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.06),
+      0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Tactile Press Micro-interaction */
+  .erpfy-pressable {
+    transition: transform var(--erpfy-motion-instant, 75ms) ease;
+  }
+  .erpfy-pressable:active {
+    transform: scale(0.97);
+  }
+  .nav-section-label {
+    padding: 20px 12px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--erpfy-ink-muted);
+  }
+  .nav-count {
+    margin-left: auto;
+    border-radius: 999px;
+    background: var(--erpfy-nav-count-bg);
+    color: var(--erpfy-nav-count-ink);
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Buttons
+   * ---------------------------------------------------------------- */
+
+  .icon-button {
+    display: grid;
+    height: 36px;
+    width: 36px;
+    place-items: center;
+    border-radius: 10px;
+    transition: background 160ms ease;
+  }
+  .icon-button:hover {
+    background: rgb(255 255 255 / 10%);
+  }
+  .icon-button-light:hover {
+    background: var(--erpfy-hover);
+  }
+
+  .soft-button,
+  .primary-button,
+  .danger-button,
+  .ghost-button,
+  .inverse-button,
+  .inverse-ghost-button {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 10px;
+    padding: 8px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition:
+      transform 90ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease;
+  }
+  .soft-button {
+    border: 1px solid var(--erpfy-control-line);
+    background: var(--erpfy-surface);
+    color: var(--erpfy-control-ink);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 3%);
+  }
+  .soft-button:hover {
+    background: var(--erpfy-hover);
+  }
+  .primary-button {
+    background: var(--erpfy-brand);
+    color: var(--erpfy-brand-on);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 14%);
+  }
+  .primary-button:hover {
+    background: var(--erpfy-brand-hover);
+  }
+  .danger-button {
+    background: var(--erpfy-status-critical-ink);
+    color: white;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 14%);
+  }
+  .danger-button:hover {
+    background: #7d1e14;
+  }
+  .ghost-button {
+    background: transparent;
+    color: var(--erpfy-control-ink);
+  }
+  .ghost-button:hover {
+    background: var(--erpfy-hover);
+  }
+
+  /* On the dark CTA band. Kept as real variants so a screen never has to fight
+     .soft-button with utility overrides — that is how white-on-white happened. */
+  .inverse-button {
+    background: white;
+    color: var(--erpfy-ink);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  }
+  .inverse-button:hover {
+    background: #ececea;
+  }
+  .inverse-ghost-button {
+    border: 1px solid rgb(255 255 255 / 28%);
+    background: transparent;
+    color: white;
+  }
+  .inverse-ghost-button:hover {
+    background: rgb(255 255 255 / 12%);
+  }
+
+  .soft-button:active,
+  .primary-button:active,
+  .danger-button:active,
+  .ghost-button:active,
+  .inverse-button:active,
+  .inverse-ghost-button:active {
+    transform: translateY(1px);
+  }
+  .soft-button:disabled,
+  .primary-button:disabled,
+  .danger-button:disabled,
+  .ghost-button:disabled,
+  .inverse-button:disabled,
+  .inverse-ghost-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Form controls
+   * ---------------------------------------------------------------- */
+
+  .erpfy-field {
+    display: block;
+    width: 100%;
+    min-height: 38px;
+    border: 1px solid var(--erpfy-control-line);
+    border-radius: 10px;
+    background: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--erpfy-ink);
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+  .erpfy-field::placeholder {
+    color: var(--erpfy-ink-faint);
+  }
+  .erpfy-field:focus {
+    border-color: var(--erpfy-brand);
+    outline: 2px solid var(--ring);
+    outline-offset: 1px;
+  }
+  .erpfy-field:disabled {
+    background: var(--erpfy-hover);
+    cursor: not-allowed;
+    color: var(--erpfy-ink-muted);
+  }
+  .erpfy-field-error {
+    border-color: var(--erpfy-status-critical-ink);
+  }
+  .erpfy-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--erpfy-ink);
+  }
+  .erpfy-hint {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--erpfy-ink-muted);
+  }
+  .erpfy-error-text {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--erpfy-status-critical-ink);
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Surfaces
+   * ---------------------------------------------------------------- */
+
+  .erpfy-card {
+    border: 1px solid var(--erpfy-line);
+    border-radius: 20px;
+    background: var(--erpfy-surface);
+    color: var(--erpfy-ink);
+  }
+  .erpfy-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--erpfy-line-soft);
+    padding: 20px;
+  }
+  .task-row {
+    display: flex;
+    min-height: 52px;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 8px;
+    transition: background 180ms ease;
+  }
+  .task-row:hover {
+    background: #f7f7f4;
+  }
+  .metric-card {
+    transition:
+      transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 180ms ease;
+  }
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
+  }
+  .erpfy-table-scroll {
+    overflow-x: auto;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Status pills
+   * ---------------------------------------------------------------- */
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .status-success {
+    background: var(--erpfy-status-success-bg);
+    color: var(--erpfy-status-success-ink);
+  }
+  .status-attention {
+    background: var(--erpfy-status-attention-bg);
+    color: var(--erpfy-status-attention-ink);
+  }
+  .status-critical {
+    background: var(--erpfy-status-critical-bg);
+    color: var(--erpfy-status-critical-ink);
+  }
+  .status-info {
+    background: var(--erpfy-status-info-bg);
+    color: var(--erpfy-status-info-ink);
+  }
+  .status-neutral {
+    background: var(--erpfy-status-neutral-bg);
+    color: var(--erpfy-status-neutral-ink);
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Skeletons
+   * ---------------------------------------------------------------- */
+
+  .erpfy-skeleton {
+    border-radius: 10px;
+    background: var(--erpfy-hover);
+    animation: skeleton-pulse 1400ms ease-in-out infinite;
+  }
+  @keyframes skeleton-pulse {
+    50% {
+      opacity: 0.55;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Motion
+ * ---------------------------------------------------------------- */
+
+.page-enter {
+  animation: page-enter 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.drawer-enter {
+  animation: drawer-enter 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dialog-enter {
+  animation: dialog-enter 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.toast-enter {
+  animation: toast-enter 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.account-overlay-enter {
+  animation: account-overlay-enter 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.account-overlay-exit {
+  animation: account-overlay-exit 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  pointer-events: none;
+}
+.settings-content-enter {
+  animation: settings-content-enter 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.account-route-settling #admin-content *,
+.account-route-settling #admin-content *::before,
+.account-route-settling #admin-content *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+.chart-bar {
+  animation: bar-rise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: bottom;
+}
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes drawer-enter {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+  }
+}
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes account-overlay-enter {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes account-overlay-exit {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes settings-content-enter {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+}
+@keyframes bar-rise {
+  from {
+    transform: scaleY(0);
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .soft-button,
+  .primary-button,
+  .danger-button,
+  .ghost-button,
+  .inverse-button,
+  .inverse-ghost-button {
+    min-height: 40px;
+  }
+  .erpfy-field {
+    min-height: 42px;
+  }
+  th,
+  td {
+    white-space: nowrap;
+  }
+}

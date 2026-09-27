@@ -1,0 +1,21 @@
+{
+  "id": "boutique-luxury",
+  "name": "Boutique Luxury",
+  "version": "1.0.0",
+  "author": "ERPfy Design Studio",
+  "description": "Sophisticated, minimalist aesthetic with serif typography, editorial lookbooks, and warm gold luxury accents.",
+  "tokens": {
+    "primaryColor": "#b45309",
+    "accentColor": "#d97706",
+    "backgroundColor": "#fffbeb",
+    "textColor": "#1c1917",
+    "fontFamily": "Playfair Display, Georgia, serif"
+  },
+  "sections": [
+    { "type": "announcement_bar", "enabled": true },
+    { "type": "editorial_hero", "enabled": true },
+    { "type": "curated_collection", "enabled": true },
+    { "type": "craftsmanship_story", "enabled": true },
+    { "type": "footer", "enabled": true }
+  ]
+}

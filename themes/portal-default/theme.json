@@ -1,0 +1,73 @@
+{
+  "id": "portal-default",
+  "name": "ERPfy Portal Default",
+  "version": "1.0.0",
+  "author": "ERPfy.net Platform Team",
+  "description": "Clean, high-conversion modern storefront theme optimized for global commerce with multi-currency and fast mobile checkout.",
+  "status": "published",
+  "supports": {
+    "sections": true,
+    "blocks": true,
+    "customDomain": true,
+    "darkMode": false,
+    "multiCurrency": true,
+    "announcementBar": true
+  },
+  "defaultSettings": {
+    "colors": {
+      "brandPrimary": "#1e5631",
+      "brandSecondary": "#064e3b",
+      "accent": "#f59e0b",
+      "background": "#ffffff",
+      "surface": "#f8fafc",
+      "text": "#0f172a",
+      "textMuted": "#64748b",
+      "border": "#e2e8f0"
+    },
+    "typography": {
+      "headingFont": "Inter, sans-serif",
+      "bodyFont": "Inter, sans-serif",
+      "baseFontSizePx": 16
+    },
+    "header": {
+      "showAnnouncement": true,
+      "announcementText": "Free worldwide shipping on all orders over $100!",
+      "stickyHeader": true,
+      "showSearchBar": true
+    },
+    "sections": [
+      {
+        "id": "hero_banner",
+        "type": "hero",
+        "enabled": true,
+        "title": "Welcome to Our Flagship Store",
+        "subtitle": "Discover premium quality products direct from the manufacturer with guaranteed satisfaction.",
+        "buttonText": "Explore Catalog",
+        "buttonHref": "#products"
+      },
+      {
+        "id": "featured_collection",
+        "type": "product_grid",
+        "enabled": true,
+        "title": "Featured Collection",
+        "subtitle": "Handpicked essentials and best-sellers.",
+        "columns": 4
+      },
+      {
+        "id": "trust_badges",
+        "type": "features_list",
+        "enabled": true,
+        "features": [
+          { "icon": "Truck", "title": "Free Fast Shipping", "desc": "On orders over $100" },
+          { "icon": "ShieldCheck", "title": "Authentic Guarantee", "desc": "100% verified genuine products" },
+          { "icon": "RotateCcw", "title": "Easy Returns", "desc": "30-day money-back guarantee" },
+          { "icon": "Clock", "title": "24/7 Support", "desc": "Dedicated customer assistance" }
+        ]
+      }
+    ],
+    "footer": {
+      "copyrightText": "© 2026 ERPfy.net. All rights reserved.",
+      "showSocialLinks": true
+    }
+  }
+}

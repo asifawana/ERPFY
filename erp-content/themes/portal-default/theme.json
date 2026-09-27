@@ -1,0 +1,26 @@
+{
+  "id": "portal-default",
+  "name": "ERPFY Default Portal",
+  "version": "1.0.0",
+  "description": "Approved ERPFY baseline theme featuring the Shopify-like shell, topbar colour picker, and neutral canvas.",
+  "author": "ERPFY Team",
+  "status": "active",
+  "supports": {
+    "customHeaderColor": true,
+    "darkMode": false,
+    "sidebarCollapsible": true
+  },
+  "defaultPreset": "Forest green",
+  "presets": [
+    { "name": "Forest green", "color": "#1e5631" },
+    { "name": "Emerald", "color": "#064e3b" },
+    { "name": "Teal ocean", "color": "#0f3d3e" },
+    { "name": "Classic navy", "color": "#1e3a8a" },
+    { "name": "Royal indigo", "color": "#3730a3" },
+    { "name": "Deep purple", "color": "#4c1d95" },
+    { "name": "Wine crimson", "color": "#831843" },
+    { "name": "Espresso", "color": "#451a03" },
+    { "name": "Charcoal slate", "color": "#18181b" },
+    { "name": "Classic black", "color": "#0a0a0a" }
+  ]
+}

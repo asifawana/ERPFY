@@ -1,0 +1,17 @@
+{
+  "name": "Homepage",
+  "order": [
+    "announcement_bar",
+    "hero_banner",
+    "trust_badges",
+    "featured_products",
+    "footer"
+  ],
+  "sections": {
+    "announcement_bar": { "type": "announcement_bar", "disabled": false },
+    "hero_banner": { "type": "hero_banner", "disabled": false },
+    "trust_badges": { "type": "trust_badges", "disabled": false },
+    "featured_products": { "type": "featured_products", "disabled": false },
+    "footer": { "type": "footer", "disabled": false }
+  }
+}

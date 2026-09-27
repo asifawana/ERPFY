@@ -1,0 +1,9 @@
+{
+  "name": "Store Header",
+  "type": "header",
+  "settings": [
+    { "id": "showSearch", "type": "checkbox", "label": "Show Instant Search", "default": true },
+    { "id": "showCartCounter", "type": "checkbox", "label": "Show Live Cart Counter", "default": true },
+    { "id": "menuHandle", "type": "text", "label": "Main Navigation Handle", "default": "main-menu" }
+  ]
+}

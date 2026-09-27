@@ -1,0 +1,24 @@
+/**
+ * ERPFY Portal Default Theme Stylesheet (style.css)
+ *
+ * Encapsulates the approved design tokens, variables, and typography for portal-default.
+ */
+
+:root {
+  --erpfy-canvas: #f6f6f4;
+  --erpfy-surface: #ffffff;
+  --erpfy-rail: #ebebe9;
+  --erpfy-topbar: #1e5631;
+  --erpfy-ink: #1c1917;
+  --erpfy-ink-muted: #57534e;
+  --erpfy-ink-faint: #78716c;
+  --erpfy-border: #e7e5e4;
+  --erpfy-border-strong: #d6d3d1;
+  --erpfy-brand: #1e5631;
+  --erpfy-brand-hover: #164024;
+  --erpfy-brand-on: #ffffff;
+  --erpfy-brand-soft: #f0f7f2;
+  --erpfy-brand-soft-ink: #143b22;
+  --erpfy-brand-line: #a7d0b3;
+  --erpfy-brand-ring: rgba(30, 86, 49, 0.35);
+}

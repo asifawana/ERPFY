@@ -1,0 +1,11 @@
+{
+  "name": "Featured Products",
+  "type": "featured-products",
+  "tag": "section",
+  "class": "storefront-products",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Section Title", "default": "Featured Collection" },
+    { "id": "limit", "type": "range", "label": "Max Items", "min": 4, "max": 24, "default": 8 },
+    { "id": "showRating", "type": "checkbox", "label": "Show Star Ratings", "default": true }
+  ]
+}
