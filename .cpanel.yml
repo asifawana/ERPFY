@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/icongadgets/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - if [ -d "/home/icongadgets/pulse.com.pk" ]; then /bin/cp -R * /home/icongadgets/pulse.com.pk/; fi
