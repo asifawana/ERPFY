@@ -33,7 +33,6 @@ export async function GET(request: Request) {
       'products',
       'orders',
       'branches',
-      'custom_domains',
       'modules',
     ];
     const quotas: Record<string, unknown> = {};
